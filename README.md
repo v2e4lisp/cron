@@ -1,5 +1,3 @@
-
-
 # Cron
 
 http://crontab.org/
@@ -7,9 +5,20 @@ http://crontab.org/
 ## Usage
 
 ```golang
-cron := NewCronJob()
-hi := func() { fmt.Println("hello world") }
-cron.Register("* * * * *", hi)
-// every minute print "hello world"
+package main
+
+import (
+        "fmt"
+
+        "github.com/v2e4lisp/cron"
+)
+
+func main() {
+        cron := cron.NewCron()
+        hi := func() { fmt.Println("hello world") }
+        // print a "hello world" every minute
+        cron.Register("hi", "* * * * *", hi)
+        cron.Start()
+}
 ```
 
