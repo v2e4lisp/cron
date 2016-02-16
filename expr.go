@@ -209,16 +209,6 @@ func parseAny(s string, field CronFieldType) (timeExpr, error) {
 
         expr, err := makeRng(valid[0], valid[1], step, field)
         return expr, err
-
-        // if step <= 0 {
-        //         return nil, errors.New("parse error: invalid step " + s)
-        // }
-        // // Internally we use 0 to represent SUNDAY. If 7 is used, change it to 0
-        // if field == WeekdayField && valid[1] == 7 && (valid[1]-valid[0])%step == 0 {
-        //         return list{[]timeExpr{num{0}, rng{valid[0], valid[1] - 1, step, any}}}, nil
-        // }
-        // // fmt.Println(rng{valid[0],valid[1], step, any})
-        // return rng{valid[0], valid[1], step, any}, nil
 }
 
 func parseRng(startEnd []string, field CronFieldType) (timeExpr, error) {
@@ -256,15 +246,6 @@ func parseRng(startEnd []string, field CronFieldType) (timeExpr, error) {
 
         expr, err := makeRng(start, end, step, field)
         return expr, err
-
-        // if step <= 0 {
-        //         return nil, errors.New("parse error: invalid step " + s)
-        // }
-        // // Internally we use 0 to represent SUNDAY. If 7 is used, change it to 0
-        // if field == WeekdayField && end == 7 && (end-start)%step == 0 {
-        //         return list{[]timeExpr{num{0}, rng{start, end - 1, step, false}}}, nil
-        // }
-        // return rng{start, end, step, false}, nil
 }
 
 func makeRng(start, end, step int, field CronFieldType) (timeExpr, error) {
