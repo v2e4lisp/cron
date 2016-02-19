@@ -4,7 +4,7 @@ http://crontab.org/
 
 ## Usage
 
-```golang
+```go
 package main
 
 import (
